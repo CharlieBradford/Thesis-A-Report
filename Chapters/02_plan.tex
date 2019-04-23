@@ -1,5 +1,23 @@
 \chapter{Thesis Plan}
 \section{Definition of Success}\label{sec:success}
+In order to develop a system that adequately addresses the gaps in knowledge identified in Chapter \ref{chap:litReview}, some method of classifying the performance of a system must be determined. These classification will serve as goals that will significantly shape the creation of the system so ensuring accurate and reasonable specification is extremely important.
+
+The two main tenets of any aggregation platform are validity and reliability; in this case validity take the form of financial performance and reliability will be the system's robustness against various factors that have the potential to compromise validity. Further, it is likely worth examining the performance of the algorithm on a portfolio level and an individual stock level independently, in order to allow for better speculation on potential for generalisation. Full reasoning and explanation for the success classifications follow, however an summarised form is outlined in table \ref{tab:success}. 
+
+\begin{table}[p]
+    \centering
+    \begin{tabularx}{0.95\textwidth}{cXXX}
+        \toprule\toprule
+         & Aggregate Level of Financial Success  &Individual Level of Financial Success & Robustness of System \\\midrule
+        Ideal & System outperforms SP[1$|$4$|$6]00 & More accurate than lagged Fama-French model for an individual security & Proven against experimental data to be highly robust against collusion and spam\\
+        \addlinespace
+        Good & Outperforms simple average of Recommendations & More Accurate than a CAPM model for an individual security & Robust against collusion and span in all but the most extreme cases\\
+        \addlinespace
+        Acceptable & System provides greater returns than inflation && Performs better than simple average against white noise and some collusion \\ \bottomrule
+    \end{tabularx}
+    \caption{Classifications of success}
+    \label{tab:success}
+\end{table}
 
 
 \section{Schedule}
@@ -11,7 +29,7 @@ The second stage will start at the beginning of term 2 and overlap slightly with
 
 Concurrently with stage two, in stage three simulated data will be created that will aid in the assessment of the chosen program's robustness against collusion and white noise. After this is complete and the optimum program has been chosen in stage two then the program will be assessed based on the definition of success outlined in section \ref{sec:success}.
 
-Stage four will take place over the entirety term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that is can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stocks
+Stage four will take place over the entirety term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that is can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stock or a portfolio. This platform would likely be online however ideally it would have an API so that it could be integrated into trading platforms such as nabtrade, CommSec, or Robinhood.
 {
 \newgeometry{left=1.5cm, bottom =1.5cm, top=1.5cm, right=1.5cm}
 \begin{landscape}
