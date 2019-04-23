@@ -1,0 +1,71 @@
+\chapter{Thesis Plan}
+\section{Definition of Success}\label{sec:success}
+
+
+\section{Schedule}
+The first stage of the thesis includes all preparation work and production of the initial algorithm. The first part of this stage primarily involved gaining a deeper understanding of the topic and greater intuition about the topic so that any relevant gaps in the literature could be adequately captured and addressed by the problem statement. Once this was complete the process of cleaning data and formatting it as seen in tables \ref{tab:histPrice}, \ref{tab:industries}, and \ref{tab:recommendations}. This was done for the SP100, SP400, and SP600 for reasons explained in \ref{sec:plan}. 
+
+After the problem had been formulated and the data was in a form that was mostly ideal, preliminary work began on several aggregation methods. Details on several on the approaches are laid out in section \ref{sec:plan} and the bulk of this work will occur over the holiday period and early next term as illustrated in figure \ref{fig:gantt}.
+
+The second stage will start at the beginning of term 2 and overlap slightly with stage one as some fine tuning is naturally a part of the development process. Towards the end and after the fine tuning is complete, the single best performing algorithm will be selected. This process will also overlap with fine tuning to ensure that the best version of the best algorithm is chosen.
+
+Concurrently with stage two, in stage three simulated data will be created that will aid in the assessment of the chosen program's robustness against collusion and white noise. After this is complete and the optimum program has been chosen in stage two then the program will be assessed based on the definition of success outlined in section \ref{sec:success}.
+
+Stage four will take place over the entirety term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that is can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stocks
+{
+\newgeometry{left=1.5cm, bottom =1.5cm, top=1.5cm, right=1.5cm}
+\begin{landscape}
+\pagestyle{empty}
+
+\begin{scriptsize}
+\begin{figure}[p]
+\begin{center}
+\begin{ganttchart}[
+hgrid,
+vgrid]{2}{41}
+%labels
+\gantttitle{Term 1}{10}
+\gantttitle{}{5}
+\gantttitle{Term 2}{10}
+\gantttitle{}{5}
+\gantttitle{Term 3}{10}\\
+\gantttitlelist{1,...,40}{1}\\
+\gantttitlelist{1,...,10}{1}
+\gantttitle{}{5}
+
+\gantttitlelist{1,...,10}{1}
+\gantttitle{}{5}
+
+\gantttitlelist{1,...,10}{1}\\
+%tasks
+\ganttgroup[inline=false]{Stage 1}{2}{18}\\
+\ganttbar{Literature Survey}{2}{6} \\
+\ganttbar{Problem Formulation}{3}{6} \\
+\ganttbar{Cleaning Data}{4}{8} \\
+\ganttbar{Prelim. System Design}{8}{18} \\
+\ganttgroup[inline=false]{Stage 2}{17}{23}\\
+\ganttbar{Fine Tuning}{17}{21} \\
+\ganttbar{Choose Best}{20}{23} \\
+\ganttgroup[inline=false]{Stage 3}{21}{25}\\
+\ganttbar{Create Dummy Data}{21}{22}\\
+\ganttbar{Assess Performance}{22}{25} \\
+\ganttgroup[inline=false]{Stage 4}{27}{40}\\
+\ganttbar{Web Platform}{27}{40}
+
+
+\end{ganttchart}
+\end{center}
+\caption{Gantt Chart}
+\label{fig:gantt}
+\end{figure}
+\end{scriptsize}
+
+\restoregeometry
+\pagestyle{plain}
+\end{landscape}
+
+}
+\section{Proposed Approaches}\label{sec:plan}
+
+
+

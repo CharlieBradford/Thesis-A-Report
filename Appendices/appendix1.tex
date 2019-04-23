@@ -1,0 +1,107 @@
+\chapter{Appendix 1}\label{app1}
+
+\section{Data Format}\label{selectedsecurities}
+\begin{table}[p]
+\centering
+\begin{tabular}{@{}clclr@{}}
+\toprule\toprule
+Permanent Number & \multicolumn{1}{c}{Date} & Ticker Symbol & \multicolumn{1}{c}{Price Point} & Daily Volume \\\midrule
+10042 & 20070103 & CAU & 0.8    & 281300 \\ 
+10042 & 20070104 & CAU & 0.79   & 147900 \\
+10042 & 20070105 & CAU & 0.75   & 363700 \\
+10042 & 20070108 & CAU & 0.76   & 211100 \\
+10042 & 20070109 & CAU & 0.74   & 190800 \\
+10042 & 20070110 & CAU & 0.71   & 72000  \\
+10042 & 20070111 & CAU & 0.75   & 104300 \\
+10042 & 20070112 & CAU & 0.82   & 196500 \\
+10042 & 20070116 & CAU & 0.79   & 291800 \\
+10042 & 20070117 & CAU & 0.85   & 210500 \\
+10042 & 20070118 & CAU & 0.87   & 469100 \\
+10042 & 20070119 & CAU & 0.84   & 121800 \\
+10042 & 20070122 & CAU & 0.84   & 63100  \\
+10042 & 20070123 & CAU & 0.86   & 133000 \\
+10042 & 20070124 & CAU & 0.85   & 78800  \\
+10042 & 20070125 & CAU & 0.81   & 145500 \\
+10042 & 20070126 & CAU & 0.7999 & 147300 \\
+10042 & 20070129 & CAU & 0.81   & 118700 \\
+10042 & 20070130 & CAU & 0.81   & 82700  \\
+10042 & 20070131 & CAU & 0.82   & 26400  \\
+10042 & 20070201 & CAU & 0.83   & 109900 \\
+10042 & 20070202 & CAU & 0.82   & 44000  \\
+10042 & 20070205 & CAU & 0.79   & 77500  \\
+10042 & 20070206 & CAU & 0.8    & 59200  \\
+10042 & 20070207 & CAU & 0.78   & 186500 \\
+10042 & 20070208 & CAU & 0.76   & 260000 \\
+10042 & 20070209 & CAU & 0.76   & 78800  \\
+10042 & 20070212 & CAU & 0.76   & 47000  \\ \bottomrule
+\end{tabular}
+\caption{Format of historical pricing data}
+\label{tab:histPrice}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule\toprule
+Company & Ticker & GISC Classification \\ \midrule
+Apple Inc.                        & AAPL  & Information Technology \\ 
+AbbVie Inc.                       & ABBV  & Health Care            \\
+Abbott Laboratories               & ABT   & Health Care            \\
+Accenture plc                     & ACN   & Information Technology \\
+Allergan, Plc                     & AGN   & Health Care            \\
+American International Group      & AIG   & Financials             \\
+Allstate Corp                     & ALL   & Financials             \\
+Amgen Inc.                        & AMGN  & Health Care            \\
+Amazon.com Inc.                   & AMZN  & Consumer Discretionary \\
+American Express Co               & AXP   & Financials             \\
+Boeing Company                    & BA    & Industrials            \\
+Bank of America Corp              & BAC   & Financials             \\
+Biogen Inc.                       & BIIB  & Health Care            \\
+The Bank of New York Mellon Corp. & BK    & Financials             \\
+Booking Holdings Inc              & BKNG  & Consumer Discretionary \\
+BlackRock                         & BLK   & Financials             \\
+Bristol-Myers Squibb              & BMY   & Health Care            \\
+Berkshire Hathaway                & BRK.B & Financials             \\
+Citigroup Inc.                    & C     & Financials             \\
+Caterpillar Inc.                  & CAT   & Industrials            \\
+Celgene Corp.                     & CELG  & Health Care            \\
+Charter Communications            & CHTR  & Communication Services \\
+Colgate-Palmolive                 & CL    & Consumer Staples       \\
+Comcast Corp.                     & CMCSA & Communication Services \\
+Capital One Financial             & COF   & Financials             \\
+ConocoPhillips                    & COP   & Energy                 \\
+Costco Wholesale Corp.            & COST  & Consumer Staples       \\
+Cisco Systems                     & CSCO  & Information Technology \\ \bottomrule
+\end{tabular}
+\caption{Example of company names mapped to ticker symbol}
+\label{tab:industries}
+\end{table}
+
+\begin{table}[p]
+\centering
+\begin{tabular}{@{}lllll@{}}
+\toprule\toprule
+TICKER & IRECCD & ESTIMID    & REVDATS  \\ \midrule
+AAPL   & 1      & BRIGANUS   & 20120125 \\
+AAPL   & 1      & OLMSTEAD   & 20121024 \\
+AAPL   & 1      & HASPA      & 20130124 \\
+AAPL   & 2      & MRNGSTAR   & 20110921 \\
+AAPL   & 3      & JOLSON     & 20140424 \\
+AAPL   & 1      & BTIG       & 20120124 \\
+AAPL   & 2      & FBOSTON    & 20130826 \\
+AAPL   & 1      & TECHINRE   & 20121224 \\
+AAPL   & 2      & FBNSEC     & 20190103 \\
+AAPL   & 1      & HILLIARD   & 20121205 \\
+AAPL   & 2      & MRNGSTAR   & 20120130 \\
+AAPL   & 1      & JANNEY     & 20150128 \\
+AAPL   & 1      & PRMDN030   & 20120504 \\
+AAPL   & 2      & ISIGROUP   & 20121206 \\
+AAPL   & 3      & BGCPART    & 20130124 \\
+AAPL   & 4      & PRMDN045   & 20111021 \\
+AAPL   & 2      & STERNE     & 20130422 \\
+AAPL   & 2      & EVERCO     & 20140930 \\
+AAPL   & 2      & PRMDN045   & 20151029 \\ \bottomrule
+\end{tabular}
+\caption{Format of Recommendations}
+\label{tab:recommendations}
+\end{table}

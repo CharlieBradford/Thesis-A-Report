@@ -1,0 +1,61 @@
+% Chapter Template
+
+\chapter{Introduction} % Main chapter title
+
+\section{Iterative Filtering}
+Iterative filtering (IF) is class of algorithms designed to aggregate data from several sources of unknown variances. These algorithms were initially investigated within the field of physics to improve the reliability of results however they have since been generalised and are increasingly applied to online voting systems. Further study has revealed that IF algorithms are highly resistant to cheating and able to produce accurate and reliable results even in the case of a high noise to signal ratio.
+
+Early IF algorithms typically made use of a reciprocal variance weighting of the form:
+
+\begin{equation}
+    \tilde{\mu} = \sum\limits_i\frac{r_i\sigma_i^{-\alpha}}{\sum\limits_j \sigma_j^{-\alpha}} \label{negRecip}
+\end{equation}
+
+Where $\tilde{\mu}$ was the estimated ``true'' value, $alpha$ is some positive factor that can be increased in order to reduce the influence of outliers, and $r_i$ and $\sigma_i$ are the rating and standard deviation, respectively, of agent $i$. Of course, the raison d'\^etre of IF is to calculate a true value when variance of each agent is unknown, so, in this case, variance would be estimated as such:
+
+\begin{equation}
+\sigma_i^2 = \frac{1}{|j:i\rightarrow j| - 1}\sum\limits_{j:i\rightarrow j}(r_{i\rightarrow j} - \tilde{\mu}_j)^2 \label{varCalc}
+\end{equation}
+
+Where $j:i\rightarrow j$ refers to every election $j$ where actor $i$ casts a vote and $r_{i\rightarrow j}$ refers to the vote cast by actor $i$ in election $j$ until the calculated average converges on a value.
+
+The basic premise of IF is to take a simple average then alternate between a weighting equation such as \ref{varCalc} and an average equation that makes use of those weights such as \ref{negRecip}.
+
+Some of the advantages of iterative filtering are:
+\begin{description}
+    \item[Accuracy] Data aggregated using iterative filtering can be shown to have a lower variance than any individual source being aggregated and approaches the theoretical lower bound of variance possible. 
+    \item[Bias] Estimation errors can come in several forms, and particularly for this project we need to be aware of systemic biases where an analyst consistently under or overestimates their recommendation.
+    \item[Collusion] Particularly in the world of finance where research houses and prop trading departments fall often under the same corporation there is a clear incentive for a security to be incorrectly priced in order for the whole corporation to make more money. Something along this line was recently exposed as happening at Deutsche Bank, and hopefully this system could identify places with particularly high variance and flag them as possibly fraudulent. Or just bad at their job.
+    \item[Spam] Research in financial and economic areas is so fraught with issues regarding misbehaving data and low signal to noise ratios that the entire discipline of econometric was created just to address them. So it is exceptionally useful that iterative filtering can identify and disregard spam.
+\end{description}
+
+\section{Financial Data}
+Finance is a field that has proven to be particularly resistant to study due to the extremely large volume of data available and a very high noise to signal ratio. These traits indicate that using IF to aggregate financial data could potentially identify patterns that could be of significant value in predicting future prices.
+
+The specific form of the data that are of interest are 5-point recommendations regarding the predicted price movements of a stock. These recommendations are articulated as such:
+\begin{description}
+    \item[5] Strong Buy
+    \item[4] Buy
+    \item[3] Hold
+    \item[2] Sell
+    \item[1] Strong Sell
+\end{description}
+Thus, a weighted average should be an accurate predictor the change in stock price of the short-medium term.
+
+The concept of ``alpha'' is mentioned quite often in the financial world and refers to an ability to reliably perform differently to the market as a whole. This alpha could be negative, i.e. consistently underperforming the market, or positive, i.e. consistently outperforming. In this case ``the market'' typically refers to some market index, such as the Dow Jones in the U.S. or the ASX100 in Australia.
+
+Alpha can be attributed to either an individual, a research firm, or any sub-structure between. For example, the hypothetical firm SchmitiBank may provide highly accurate rating for the Consumer Discretionary company Pear Inc. due to one exceptional analyst, a highly effective Consumer Discretionary analytical team, or exceptional utilisation of all resources company wide. If either of the latter two happen to be the case then SchmitiBank is likely to issue accurate recommendations for all Consumer Discretionary companies or all companies, respectively. As a result of this any algorithm attempting to determine the origin of alpha within a firm would have to look at performance within a single stock, in general and within each GISC sector:
+\begin{itemize}
+    \item Energy
+    \item Materials
+    \item Industrials
+    \item Consumer Discretionary
+    \item Consumer Staples
+    \item Health Care
+    \item Financials
+    \item Information Technology
+    \item Telecommunication Services
+    \item Utilities
+    \item Real Estate
+\end{itemize}
+These classifications are very useful within financial research as most companies fall neatly within one category and they represent the arrangement of team in most analytical firms and thus are ideal for providing a proxy sub-structure to which alpha can be assigned. 
