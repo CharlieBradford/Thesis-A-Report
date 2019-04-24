@@ -2,11 +2,19 @@
 \section{Definition of Success}\label{sec:success}
 In order to develop a system that adequately addresses the gaps in knowledge identified in Chapter \ref{chap:litReview}, some method of classifying the performance of a system must be determined. These classification will serve as goals that will significantly shape the creation of the system so ensuring accurate and reasonable specification is extremely important.
 
-The two main tenets of any aggregation platform are validity and reliability; in this case validity take the form of financial performance and reliability will be the system's robustness against various factors that have the potential to compromise validity. Further, it is likely worth examining the performance of the algorithm on a portfolio level and an individual stock level independently, in order to allow for better speculation on potential for generalisation. Full reasoning and explanation for the success classifications follow, however an summarised form is outlined in table \ref{tab:success}. 
+The two main tenets of any aggregation platform are validity and reliability; in this case validity take the form of financial performance and reliability will be the system's robustness against various factors that have the potential to compromise validity. Further, it is likely worth examining the performance of the algorithm on a portfolio level and an individual stock level independently, in order to allow for better speculation on potential for generalisation. Full reasoning and explanation for the success classifications follow, however an summarised form is outlined in table \ref{tab:success}.
+
+\subsection{Portfolio Performance}
+The ideal algorithm would be able to isolate both positive and negative alpha within analytical firm and assign trust based on this. As such, once alpha is properly identified this ideal system should be able to generate returns in excess of the portfolio on which is it trained. The SP100, SP400 and SP600 are portfolios of large, medium, and small market cap stocks respectively and will be used to assess the system as they collectively provide a good proxy for most regularly traded stocks, have large volumes of recommendation and historical price data, and will allow for an assessment of the correlation (if any) between efficacy of the algorithm and market capitalisation.
+
+\subsection{Individual Performance}
+The most typical use case for a stock recommendation is to aide in determining the most appropriate action to take regarding a single stock, thus an algorithm that can supplement this data by assessing analysts over a wider portfolio and then augmenting and aggregating recommendations based on this exogenous information would provide enhance their usability.  
+
+\subsection{Robustness}
 
 \begin{table}[p]
     \centering
-    \begin{tabularx}{0.95\textwidth}{cXXX}
+    \begin{tabularx}{0.95\textwidth}{@{\extracolsep{\fill}}cXXX}
         \toprule\toprule
          & Aggregate Level of Financial Success  &Individual Level of Financial Success & Robustness of System \\\midrule
         Ideal & System outperforms SP[1$|$4$|$6]00 & More accurate than lagged Fama-French model for an individual security & Proven against experimental data to be highly robust against collusion and spam\\
