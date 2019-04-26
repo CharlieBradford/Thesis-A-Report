@@ -6,10 +6,17 @@
 \usepackage{comment}
 \usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{geometry}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{appendix}
+\usepackage{mathspec}
+\usepackage{tablefootnote}
+\usepackage[backend=bibtex, sorting=none]{biblatex}
+\addbibresource{references.bib}
+\setmathsfont(Digits,Latin,Greek)[Numbers={Lining,Proportional}]{Comic Sans MS}
+\setmainfont{Comic Sans MS}
 %%% Class options:
 
 %  undergrad (default)
@@ -32,7 +39,7 @@
 \thesisZid{z5114682}
 %\thesistopic{XX00}  % for undergrad theses only
 \thesisdegree{Bachelor of Engineering in Software Engineering}
-\thesisdate{November 2019}
+\thesisdate{April 2019}
 \thesissupervisor{A/Prof.\ Aleksander Ignjatovic}% for undergrad theses only
 
 
@@ -61,14 +68,15 @@
 \include{Chapters/00_introduction}
 \include{Chapters/01_litreview}
 \include{Chapters/02_plan}
-\include{Chapters/03_preparations}
-\include{Chapters/04_conclusion}
+%\include{Chapters/03_preparations}
+%\include{Chapters/04_conclusion}
 
 %% chapters in the ``backmatter'' section do not have chapter numbering
 %% text in the ``backmatter'' is single spaced
 \backmatter
-\bibliographystyle{alpha}
-\bibliography{pubs}
+%\bibliographystyle{alpha}
+\printbibliography
+
 
 \appendix
 \include{Appendices/appendix1}

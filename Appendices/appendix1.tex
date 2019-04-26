@@ -1,11 +1,42 @@
 \chapter{Appendix}
 
 \section{Data Format}\label{selectedsecurities}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ccll@{}}
+\toprule\toprule
+\multicolumn{1}{c}{Ticker} & \multicolumn{1}{c}{Recommendation} & \multicolumn{1}{c}{Analyst} & \multicolumn{1}{c}{Date} \\ \midrule
+\multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots}  \\
+AAPL   & 1      & BRIGANUS   & 20120125 \\
+AAPL   & 1      & OLMSTEAD   & 20121024 \\
+AAPL   & 1      & HASPA      & 20130124 \\
+AAPL   & 2      & MRNGSTAR   & 20110921 \\
+AAPL   & 3      & JOLSON     & 20140424 \\
+AAPL   & 1      & BTIG       & 20120124 \\
+AAPL   & 2      & FBOSTON    & 20130826 \\
+AAPL   & 1      & TECHINRE   & 20121224 \\
+AAPL   & 2      & FBNSEC     & 20190103 \\
+AAPL   & 1      & HILLIARD   & 20121205 \\
+AAPL   & 2      & MRNGSTAR   & 20120130 \\
+AAPL   & 1      & JANNEY     & 20150128 \\
+AAPL   & 1      & PRMDN030   & 20120504 \\
+AAPL   & 2      & ISIGROUP   & 20121206 \\
+AAPL   & 3      & BGCPART    & 20130124 \\
+AAPL   & 4      & PRMDN045   & 20111021 \\
+AAPL   & 2      & STERNE     & 20130422 \\
+AAPL   & 2      & EVERCO     & 20140930 \\
+AAPL   & 2      & PRMDN045   & 20151029 \\ 
+\multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots}  \\\bottomrule
+\end{tabular}
+\caption{Format of Recommendations}
+\label{tab:recommendations}
+\end{table}
 \begin{table}[p]
 \centering
 \begin{tabular}{@{}clclr@{}}
 \toprule\toprule
 Permanent Number & \multicolumn{1}{c}{Date} & Ticker Symbol & \multicolumn{1}{c}{Price Point} & Daily Volume \\\midrule
+\multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{l}{\bf\ \vdots\ \ } & \multicolumn{1}{r}{\bf\vdots\ \ \ } \\
 10042 & 20070103 & CAU & 0.8    & 281300 \\ 
 10042 & 20070104 & CAU & 0.79   & 147900 \\
 10042 & 20070105 & CAU & 0.75   & 363700 \\
@@ -33,7 +64,9 @@ Permanent Number & \multicolumn{1}{c}{Date} & Ticker Symbol & \multicolumn{1}{c}
 10042 & 20070207 & CAU & 0.78   & 186500 \\
 10042 & 20070208 & CAU & 0.76   & 260000 \\
 10042 & 20070209 & CAU & 0.76   & 78800  \\
-10042 & 20070212 & CAU & 0.76   & 47000  \\ \bottomrule
+10042 & 20070212 & CAU & 0.76   & 47000  \\ 
+\multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{c}{\bf\vdots} & \multicolumn{1}{l}{\bf\ \vdots\ \ } & \multicolumn{1}{r}{\bf\vdots\ \ \ } \\
+\bottomrule
 \end{tabular}
 \caption{Format of historical pricing data}
 \label{tab:histPrice}
@@ -71,37 +104,24 @@ Comcast Corp.                     & CMCSA & Communication Services \\
 Capital One Financial             & COF   & Financials             \\
 ConocoPhillips                    & COP   & Energy                 \\
 Costco Wholesale Corp.            & COST  & Consumer Staples       \\
-Cisco Systems                     & CSCO  & Information Technology \\ \bottomrule
+Cisco Systems                     & CSCO  & Information Technology \\ 
+\multicolumn{1}{l}{\bf \qquad\vdots} & \multicolumn{1}{l}{\bf\ \vdots} & \multicolumn{1}{l}{\bf\qquad\vdots}   \\\bottomrule
 \end{tabular}
 \caption{Example of company names mapped to ticker symbol}
 \label{tab:industries}
 \end{table}
 
-\begin{table}[p]
-\centering
-\begin{tabular}{@{}lllll@{}}
-\toprule\toprule
-TICKER & IRECCD & ESTIMID    & REVDATS  \\ \midrule
-AAPL   & 1      & BRIGANUS   & 20120125 \\
-AAPL   & 1      & OLMSTEAD   & 20121024 \\
-AAPL   & 1      & HASPA      & 20130124 \\
-AAPL   & 2      & MRNGSTAR   & 20110921 \\
-AAPL   & 3      & JOLSON     & 20140424 \\
-AAPL   & 1      & BTIG       & 20120124 \\
-AAPL   & 2      & FBOSTON    & 20130826 \\
-AAPL   & 1      & TECHINRE   & 20121224 \\
-AAPL   & 2      & FBNSEC     & 20190103 \\
-AAPL   & 1      & HILLIARD   & 20121205 \\
-AAPL   & 2      & MRNGSTAR   & 20120130 \\
-AAPL   & 1      & JANNEY     & 20150128 \\
-AAPL   & 1      & PRMDN030   & 20120504 \\
-AAPL   & 2      & ISIGROUP   & 20121206 \\
-AAPL   & 3      & BGCPART    & 20130124 \\
-AAPL   & 4      & PRMDN045   & 20111021 \\
-AAPL   & 2      & STERNE     & 20130422 \\
-AAPL   & 2      & EVERCO     & 20140930 \\
-AAPL   & 2      & PRMDN045   & 20151029 \\ \bottomrule
-\end{tabular}
-\caption{Format of Recommendations}
-\label{tab:recommendations}
-\end{table}
+
+
+\section{Financial Metrics}
+\subsection{CAPM Model}\label{sec:capm}
+The return of a stock is equal to the risk free interest rate plus the market risk premium times some factor specific to the stock \cite{sharpe1964capital}.
+$$r\ =\ r_f + \beta(r_m - r_f) + \epsilon$$
+\subsection{Fama-French Model}\label{sec:famaFrench}
+The return of a stock \cite{fama1992cross} is equal to the risk free interest rate plus the some factor time each of the:
+\begin{description}
+	\item[RPM] Return of diversified portfolio less risk free rate
+	\item[SMB] Return of small cap stocks less return of large cap stocks
+	\item[HML] Return of cheap stocks less return of expensive stocks
+\end{description}
+$$r\ =\ r_f + \beta_1(r_m - r_f) + \beta_2(SMB) + \beta_3(HML) + \epsilon$$

@@ -117,10 +117,10 @@
 
 \if@thdraft%
   \RequirePackage[firstpage]{draftwatermark}
-  \def\draftfont{\fontfamily{phv}\fontsize{48pt}{60pt}\selectfont}
+  %\def\draftfont{\fontfamily{phv}\fontsize{48pt}{60pt}\selectfont}
   \SetWatermarkFontSize{12pt} % we don't use this, but it sometimes
                               % triggers a font error without it 
-  \SetWatermarkText{\draftfont DRAFT --- \today\hskip50mm \vrule height 60mm width 0mm}
+  \SetWatermarkText{ DRAFT --- \today\hskip50mm \vrule height 60mm width 0mm}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -415,12 +415,12 @@ Graduate Research.
 \endtitlepage
 }
 
-\def\coverpagetextfont{\fontfamily{phv}\fontsize{11pt}{18pt}\selectfont}
-\def\coverpagefont{\fontfamily{phv}\fontsize{14pt}{20pt}\selectfont}
-\def\boldcoverpagefont{\fontfamily{phv}\fontseries{b}\fontsize{14pt}{20pt}\selectfont}
-\def\largecoverpagefont{\fontfamily{phv}\fontsize{22pt}{32pt}\selectfont}
-\def\largeboldcoverpagefont{\fontfamily{phv}\fontseries{b}\fontsize{22pt}{36pt}\selectfont}
-\def\largeslantedcoverpagefont{\fontfamily{phv}\fontshape{sl}\fontsize{22pt}{32pt}\selectfont}
+\def\coverpagetextfont{\fontsize{11pt}{18pt}\selectfont}
+\def\coverpagefont{\fontsize{14pt}{20pt}\selectfont}
+\def\boldcoverpagefont{\fontseries{b}\fontsize{14pt}{20pt}\selectfont}
+\def\largecoverpagefont{\fontsize{22pt}{32pt}\selectfont}
+\def\largeboldcoverpagefont{\fontseries{b}\fontsize{22pt}{36pt}\selectfont}
+\def\largeslantedcoverpagefont{\fontshape{sl}\fontsize{22pt}{32pt}\selectfont}
 
 \if@ugrad
 \renewcommand{\maketitle}%
@@ -464,7 +464,7 @@ Graduate Research.
           \vskip 0pt plus 8fill
           {\largecoverpagefont \ThesisAuthor \par}%
           \vskip 0pt plus 8fill
-          { A thesis in fulfillment of the requirements for the degree of \\[2ex]
+          { A thesis in fulfilment of the requirements for the degree of \\[2ex]
               \ThesisDegreeName \par}%
           \vskip 0pt plus 8fill
           \includegraphics{crest}
@@ -507,7 +507,7 @@ Graduate Research.
 	\setlength{\evensidemargin}{25mm}
 	\setlength{\topmargin}{25mm}
 	\setlength{\headsep}{20pt}
-	\setlength{\headheight}{27pt}
+	\setlength{\headheight}{28pt}
 \else
 	%hdr dimensions
 	\setlength{\oddsidemargin}{40mm}

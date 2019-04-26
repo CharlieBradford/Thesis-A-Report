@@ -13,6 +13,9 @@ The most typical use case for a stock recommendation is to aide in determining t
 \subsection{Robustness}
 Many research houses are part of a larger corporate structure that may include prop trading divisions so there can be a direct relationship between the price of a security and the overall profit or loss of the entire firm. This can create an incentive for cheating as recommendations are able to influence stock prices. Such cheating is likely to be systematic rather than one-off and should thus should be punished by the system, however the uncontrolled environment that the algorithm will be used in is not suitable for objectively assessing specific forms of it. 
 
+As a result of the importance for cheating and the difficulty doing so using only real data it is necessary to create data that simulate various forms and degrees of bias and collusion in order to demonstrate the efficacy of the algorithm.
+
+\setcounter{footnote}{\value{footnote}+1}
 \begin{table}[p]
     \centering
     \begin{tabularx}{0.95\textwidth}{@{\extracolsep{\fill}}cXXX}
@@ -24,12 +27,12 @@ Many research houses are part of a larger corporate structure that may include p
         \addlinespace
         Acceptable & System provides greater returns than inflation && Performs better than simple average against white noise and some collusion \\ \bottomrule
     \end{tabularx}
-    \caption{Classifications of success}
+    \caption[Classifications of success]{Classifications of success \tablefootnote{See sections \ref{sec:capm} and \ref{sec:famaFrench} for more details regarding CAPM and Fama-French Models} }
     \label{tab:success}
 \end{table}
 
 
-\section{Schedule}
+\section{Schedule}\label{sec:schedule}
 The first stage of the thesis includes all preparation work and production of the initial algorithm. The first part of this stage primarily involved gaining a deeper understanding of the topic and greater intuition about the topic so that any relevant gaps in the literature could be adequately captured and addressed by the problem statement. Once this was complete the process of cleaning data and formatting it as seen in tables \ref{tab:histPrice}, \ref{tab:industries}, and \ref{tab:recommendations}. This was done for the SP100, SP400, and SP600 for reasons explained in \ref{sec:plan}. 
 
 After the problem had been formulated and the data was in a form that was mostly ideal, preliminary work began on several aggregation methods. Details on several on the approaches are laid out in section \ref{sec:plan} and the bulk of this work will occur over the holiday period and early next term as illustrated in figure \ref{fig:gantt}.
@@ -38,7 +41,7 @@ The second stage will start at the beginning of term 2 and overlap slightly with
 
 Concurrently with stage two, in stage three simulated data will be created that will aid in the assessment of the chosen program's robustness against collusion and white noise. After this is complete and the optimum program has been chosen in stage two then the program will be assessed based on the definition of success outlined in section \ref{sec:success}.
 
-Stage four will take place over the entirety term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that is can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stock or a portfolio. This platform would likely be online however ideally it would have an API so that it could be integrated into trading platforms such as nabtrade, CommSec, or Robinhood.
+Stage four will take place over the entirety of term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that is can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stock or a portfolio. This platform would likely be online however ideally it would have an API so that it could be integrated into trading platforms such as nabtrade, CommSec, or Robinhood.
 {
 \newgeometry{left=1.5cm, bottom =1.5cm, top=1.5cm, right=1.5cm}
 \begin{landscape}
@@ -92,7 +95,50 @@ vgrid]{2}{41}
 \end{landscape}
 
 }
+
+
 \section{Proposed Approaches}\label{sec:plan}
+The data has several traits, such as high volatility of stock prices or sparse recommendations for small-cap stocks, that either need to be addressed for accurate results or could be utilised to improve results. Stage one, defined in section \ref{sec:schedule}, involves creating several competing systems and assessing them on performance, so the following techniques can be tested to determine if they increase performance adequately or should be disregarded in favour of a more parsimonious model.
+
+\begin{equation}
+    ma(y_t) = \begin{cases}
+    \frac{1}{2j+1} \sum\limits_{i=-j}^j y_{t+i} & \parbox{11em}{Simple moving average\\}\\
+    \frac{1}{4j+2}\left(\sum\limits_{i=-j+1}^j (y_{t+i-1} + y_{t+i})\right) & \parbox{11em}{Convolutional moving average, giving greater weight to values close to $y_t$, $2|j$\\}\\
+    \alpha y_t + (1-\alpha)ma(y_{t-1}) & \parbox{11em}{Exponential moving average}
+    \end{cases}\label{eq:ma}
+\end{equation}
+
+\subsection{Moving Averages}
+Due to high volatility of stock prices, a moving average will likely be necessary to reduce the effects of noise on final estimates. The exact size of the averaging window will likely have to be carefully considered as most forecasts are short-medium term and too large a window may cause the system to fail to identify and attribute the correct or incorrect prediction of a short-lived jump or spike\footnote{Such a scenario would be quite common in the case of predicting the earnings of a company before they are released}. Several possible methods are posited in equation \ref{eq:ma}.
+
+
+
+\subsection{Classical Decomposition}
+By definition alpha involves foreseeing deviation from the mean that is only predicted by few. Thus predicting that a stock will rise that has always risen consistently should have less influence on an analysts trust than the prediction of an unexpected movement. A technique that makes use of this involves breaking down a time series into three components (trend, seasonal, and cycle/residual) which can be done in a multitude of ways as shown in equation \ref{eq:decomp}. The algorithm could then be run on the cycle and any significant scores could be used to augment the scores generated by running the algorithm on the full series.
+
+
+
+\begin{equation}
+    \textit{series} = \begin{cases}
+    \textit{trend} + \textit{seasonal} + \textit{cycle} \\
+    e^{\textit{trend} + \textit{seasonal} + \textit{cycle}} \\
+    \textit{trend}\times \textit{seasonal}\times \textit{cycle} \\
+    ln(\textit{trend}) + ln(\textit{seasonal}) + ln(\textit{cycle})\\
+    \qquad\vdots\qquad\vdots\qquad\vdots
+    \end{cases} \label{eq:decomp}
+\end{equation}
+
+\subsection{Second-Order Analysis}
+Another potential method for identify exceptional and unique performance is to look at the performance of a single firm or section of a firm and contrast that against the trust rating generated by running the algorithm on the full set of analysts. This will give an idea about how much better (or worse) a single firm is than the full set in aggregate which could be quite a good indicator of alpha. An example of such a measure is demonstrated in equation \ref{eq:bradfordsAlpha}, where $T$ is time, $S$ is the set of all securities, $\tau$ is the trustworthiness of an analyst, $r_{s,t}$ is an analyst's rating of stock $s$ at time $t$, $v_{s,t}$ is the true rating of stock $s$ at time $t$, and $\tilde{v}_{s,t}$ is the aggregated rating calculated in the first run of the algorithm. 
+
+\begin{equation}
+    \textit{Bradford's Alpha} = \frac{\tau \left(\frac{1}{|S||T| - 1}\sum\limits_{s\in S}\sum\limits_{t\in T}(v_{s,t} - \tilde{v}_{s,t}) ^2\right)^\frac{1}{2}}{\left(\frac{1}{|S||T| - 1}\sum\limits_{s\in S}\sum\limits_{t\in T}(r_{s,t} - v_{s,t} )^2\right)^\frac{1}{2}} \label{eq:bradfordsAlpha}
+\end{equation}
+
+The Bradford's Alpha\footnote{I invented it so I get to name it, that's just the rules.} of an analyst could then be used to augment their trust rating.
+
+
+
 
 
 
