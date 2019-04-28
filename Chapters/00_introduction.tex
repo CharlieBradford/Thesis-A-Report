@@ -3,7 +3,7 @@
 \chapter{Introduction} % Main chapter title
 
 \section{Iterative Filtering}\label{sec:IFBack}
-Iterative filtering (IF) is class of algorithms designed to aggregate data from several sources of unknown variances. These algorithms were initially investigated within the field of physics to improve the reliability of results however they have since been generalised and are increasingly applied to online voting systems \cite{laureti2006information}. Further study has revealed that IF algorithms are highly resistant to cheating and able to produce accurate and reliable results even in the case of a high noise to signal ratio \cite{juselius2014testing}.
+Iterative filtering (IF) is a class of algorithms designed to aggregate data from several sources of unknown variances. These algorithms were initially investigated within the field of physics to improve the reliability of results. They have since been generalised and are increasingly applied to online voting systems \cite{laureti2006information}. This is especially important for preventing vote manipulation in cases where there are financial repercussion, for example eBay or Amazon product reviews. Due to their high resistance to cheating, IF algorithms are able to produce accurate and reliable results even in the case of a high noise to signal ratio \cite{juselius2014testing}, which is quite important in the case of large datasets.
 
 Early IF algorithms typically made use of a reciprocal variance weighting of the form \cite{laureti2006information, de2007iterative, de2010iterative}:
 
@@ -11,28 +11,29 @@ Early IF algorithms typically made use of a reciprocal variance weighting of the
     \tilde{\mu} = \sum\limits_i\frac{r_i\sigma_i^{-\alpha}}{\sum\limits_j \sigma_j^{-\alpha}} \label{eq:negRecip}
 \end{equation}
 
-Where $\tilde{\mu}$ was the estimated ``true'' value, $alpha$ is some positive factor that can be increased in order to reduce the influence of outliers \cite{ifNotes4121}, and $r_i$ and $\sigma_i$ are the rating and standard deviation, respectively, of agent $i$. Of course, the raison d'\^etre of IF is to calculate a true value when variance of each agent is unknown, so, in this case, variance would be estimated as such:
+Where $\tilde{\mu}$ is the estimated ``true'' value, $alpha$ is a positive factor that can be increased in order to reduce the influence of outliers \cite{ifNotes4121}, and $r_i$ and $\sigma_i$ are the rating and standard deviation of agent $i$, respectively. This specification does not fit most use cases of IF, as the raison d'\^etre is to calculate a minimally variant aggregate value when variance of each agent's votes is unknown, so, in this case, variance would be estimated as in equation \ref{eq:varCalc}.
 
 \begin{equation}
 \sigma_i^2 = \frac{1}{|j:i\rightarrow j| - 1}\sum\limits_{j:i\rightarrow j}(r_{i\rightarrow j} - \tilde{\mu}_j)^2 \label{eq:varCalc}
 \end{equation}
 
-Where $j:i\rightarrow j$ refers to every election $j$ where actor $i$ casts a vote and $r_{i\rightarrow j}$ refers to the vote cast by actor $i$ in election $j$ until the calculated average converges on a value.
+Where $j:i\rightarrow j$ refers to every election $j$ where actor $i$ casts a vote and $r_{i\rightarrow j}$ refers to the vote cast by actor $i$ in election $j$. 
 
-The basic premise of IF is to take a simple average then alternate between a weighting equation such as \ref{eq:varCalc} and an average equation that makes use of those weights such as \ref{eq:negRecip}. This process is then repeated until the weighted mean converges on a static value \cite{laureti2006information}.
+The basic premise of IF is to manipulate a simple average through the combined use of a weighting equation such as \ref{eq:varCalc} and a subsequently weighted average equation as seen in equation \ref{eq:negRecip}. This process is then repeated until the weighted mean converges on a static value \cite{laureti2006information}.
 
-Some of the advantages of iterative filtering are:
+Some of the advantages of IF are:
 \begin{description}
-    \item[Accuracy] Data aggregated using the reciprocal variance iterative filtering method outlined in equations \ref{eq:negRecip} and \ref{eq:varCalc} can be shown to have a lower variance than any individual source being aggregated and approaches the Cramer-Rao lower bound of variance. \cite{ifNotes4121}.
-    \item[Bias] Estimation errors can come in several forms, and particularly for this project we need to be aware of systemic biases where an analyst consistently under or overestimates their recommendation. IF can account for these errors and potentially make use of them to improve estimates \cite{ignjatovic2009computing}.
-    \item[Cheating] Particularly in the world of finance where research houses and prop trading departments\footnote{Prop trading refers to proprietary asset trading where a firm invests its own capital to make a profit.} fall often under the same corporation there is a clear incentive for a security to be incorrectly priced in order for the whole corporation to make more money. Something along this line was recently exposed at Deutsche Bank \cite{sillyDeutsche}, and hopefully this system could identify places with particularly high variance and flag them as possibly fraudulent\footnote{Or just bad at their job.}.
-    \item[Spam] Research in financial and economic areas is fraught with issues regarding misbehaving data and low signal to noise ratios that many of the most commonly used econometric techniques were created just to address them \cite{juselius2014testing}. So it is exceptionally useful that iterative filtering can identify and disregard spam.
+    \item[Accuracy] Data aggregated using the reciprocal variance IF method outlined in equations \ref{eq:negRecip} and \ref{eq:varCalc} can be shown to have a lower variance than any individual source and approaches the Cramer-Rao lower bound of variance \cite{ifNotes4121}.
+    \item[Bias] Estimation errors manifest in several forms, systematic biases are particularly harmful as they lead to the consistent under of over estimation of analyst recommendations. IF can account for these errors and potentially make use of them to improve estimates \cite{ignjatovic2009computing}.
+    \item[Cheating] The incentive for a security to be incorrectly priced in a malpractice that is occasionaly used by corporations to increase profits. Recently exposed to be occurring at DeutscheBank \cite{sillyDeutsche}, this fraudulent behaviour is seen in many areas of the finance industry, especially when prop trading\footnote{Prop trading refers to proprietary asset trading where a firm invests its own capital to make a profit} falls under the same corporate structure as research houses. This IF system aims to identify corporations with unusually hi variances and flag them for possible fraudulent activity\footnote{Such variances may also be explained by poor job performance.}.
+    \item[Spam] Research in financial and economic areas is fraught with issues regarding misbehaving data and low signal to noise ratios. While many econometric techniques were created just to address this issue \cite{juselius2014testing}, IF can proficiently identify and disregard spam.
 \end{description}
 
+\clearpage
 \section{Financial Data}
-Finance is a field that has proven to be particularly resistant to study due to the extremely large volume of data available and a very high noise to signal ratio\cite{juselius2014testing}. As identified in section \ref{sec:IFBack}, using IF to aggregate financial data could potentially identify patterns that may be obscured by bias or white noise that could be of significant value in predicting future prices.
+Finance is a field that has proven to be particularly resistant to study due to the extremely large volume of data available and a very high noise to signal ratio\cite{juselius2014testing}. As identified in section \ref{sec:IFBack}, using IF to aggregate financial data could potentially identify patterns of analyst skill that may have otherwise been obscured by bias or white noise.
 
-The specific form of the data that are of interest are 5-point recommendations regarding the predicted price movements of a stock. These recommendations are typically articulated as such \cite{ibesMan}:
+The specific form of the data of interest is portrayed as  5-point recommendations regarding the predicted price movements of a stock. These recommendations are typically articulated as \cite{ibesMan}:
 \begin{description}
     \item[5] Strong Buy
     \item[4] Buy
@@ -42,9 +43,9 @@ The specific form of the data that are of interest are 5-point recommendations r
 \end{description}
 Thus, a weighted average should be an accurate predictor of the change in stock price in the short-medium term.
 
-The concept of ``alpha'' is mentioned quite often in the financial world and refers to an ability to reliably perform differently to the market as a whole \cite{blanchett2013alpha, holmes2009seeking}. This alpha could be negative, i.e. consistently underperforming the market, or positive, i.e. consistently outperforming. In this case ``the market'' typically refers to some market index, such as the Dow Jones in the U.S. or the ASX100 in Australia.
+The concept of ``alpha'' is mentioned quite often in the financial world and refers to an ability to reliably perform differently to a simple market aggregate \cite{blanchett2013alpha, holmes2009seeking}. This alpha could be negative, (i.e. consistently underperforming the market), or positive, (i.e. consistently outperforming). In this case ``the market'' typically refers to some market index, such as the Dow Jones in the U.S. or the ASX100 in Australia.
 
-Alpha can be attributed to either an individual, a research firm, or any sub-structure between \cite{hung2009defining}. For example, the hypothetical firm ``SchmitiBank'' may provide highly accurate rating for the Consumer Discretionary company ``Pear Inc.'' due to one exceptional analyst, a highly effective Consumer Discretionary analytical team, or exceptional utilisation of all resources company wide. If either of the latter two happen to be the case then ``SchmitiBank'' is likely to issue accurate recommendations for all Consumer Discretionary companies or all companies, respectively. As a result of this any algorithm attempting to determine the origin of alpha within a firm would have to look at performance within a single stock, in general and within each GICS sector:
+Alpha can be attributed to either an individual, a research firm, or any other existing sub-structure \cite{hung2009defining}. For example, the hypothetical firm ``SchmitiBank'' may provide a highly accurate rating for the Consumer Discretionary company ``Pear Inc.'' This may be a result one exceptional analyst, a highly effective Consumer Discretionary analytical team, or exceptional utilisation of all resources company wide. If either of the latter two are accredited for the rating then ``SchmitiBank'' is likely to issue accurate recommendations for all Consumer Discretionary companies or all companies, respectively. As a result of this any algorithm attempting to determine the origin of alpha within a firm would have to observe the firm's performance within a single stock, as a firm in general, and within each of the following GICS sectors:
 \begin{itemize}
     \item Energy
     \item Materials
@@ -58,4 +59,4 @@ Alpha can be attributed to either an individual, a research firm, or any sub-str
     \item Utilities
     \item Real Estate
 \end{itemize}
-These classifications are very useful within financial research as most companies fall neatly within one category and they represent the arrangement of team in most analytical firms and thus are ideal for providing a proxy sub-structure to which alpha can be assigned \cite{robert2003strategic}. 
+These classifications are very useful within financial research as most companies are succinctly defined by one category. They represent the arrangement of teams in most analytical firms and, thusm are ideal for providing a proxy sub-structure to which alpha can be assigned \cite{robert2003strategic}. 

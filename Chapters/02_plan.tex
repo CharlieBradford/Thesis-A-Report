@@ -1,28 +1,24 @@
 \chapter{Thesis Plan}
 \section{Problem Statement}
-How can trustworthiness scores be assigned to a firm based on their performance:
-\begin{itemize}
-    \item For a company
-    \item For a GICS sector
-    \item In general
-\end{itemize}
-In order to maximise reliability and alpha of an aggregation of recommendations and create a recommender system that out performs both other simple aggregations and ideally the market capitalisation-weighted portfolio\footnote{Nearly all market indices are weighted by market capitalisation} of the stocks it is trained on.
+The aim of this thesis is to determine how trustworthiness scores can be assigned to a firm based on their performance, as a company, in each GICS sector, or in general.
+
+By maximising the reliability and alpha of an aggregation of recommendations, a recommender system that outperforms both simple aggregation methods can be developed. This system should also outperform the market capitalisation-weighted portfolio\footnote{Nearly all market indices are weighted by market capitalisation} of the stocks it is trained on.
 
 \section{Definition of Success}\label{sec:success}
-In order to develop a system that adequately addresses the gaps in knowledge identified in Chapter \ref{chap:litReview}, some method of classifying the performance of a system must be designed. These classifications will serve as goals that will significantly shape the creation of the system so ensuring accurate and reasonable specification is extremely important.
+In order to develop a system that adequately addresses the deficiencies in knowledge identified in Chapter \ref{chap:litReview}, some method of classifying the performance of a system must be designed. These classifications will serve as goals that will significantly shape the creation of the system. Therefore, it is vital that acuracy and reasonable specification is ensured.
 
-The two main tenets of any aggregation platform are validity and reliability; in this case validity take the form of financial performance and reliability will be the system's robustness against various factors that have the potential to compromise validity. Further, it is likely worth examining the performance of the algorithm on a portfolio level and an individual stock level independently, in order to allow for better speculation on potential for generalisation and in order investigate the potential for the algorithm to be integrated into trading platforms. Full reasoning and explanation for the success classifications follow, however an summarised form is outlined in table \ref{tab:success}.
+The two main tenets of any aggregation platform are validity and reliability. In this application validity will take the form of financial performance while reliability will be the system's robustness against various factors that have the potential to compromise validity. Furthermore, the examination of the algorithm's performance on a portfolio and individual stock level independently will allow for better speculation on potential for generalisation. In doing this, the potential for the algorithm to be integrated into trading platforms will be determined. Full reasoning and explanation for the success classifications follow, however a summarised form is outlined in table \ref{tab:success}.
 
 \subsection{Portfolio Performance}
-The ideal algorithm would be able to isolate both positive and negative alpha within an analytical firm and assign trust based on this. As such, once alpha is properly identified this system should be able to generate returns in excess of the portfolio on which is it trained\footnote{This, of course, assumes that there is some alpha amongst the analysts.}. The SP100, SP400 and SP600 are portfolios of large, medium, and small market cap stocks respectively and will be used to assess the system as they collectively provide a good proxy for most standard equity portfolios, have large volumes of recommendation and historical price data, and will allow for an assessment of the correlation (if any) between efficacy of the algorithm and market capitalisation\footnote{Such a relationship will likely be based on regularity of recommendations and the relationship between company executives and the analysts}.
+The ideal algorithm would be able to isolate both positive and negative alpha within an analytical firm and assign trust accordingly. As such, once alpha is properly identified, this system should be able to generate returns in excess of the portfolio on which it is trained\footnote{This, of course, assumes that there is some alpha amongst the analysts.}. The SP100, SP400 and SP600 are portfolios of large, medium, and small market cap stocks respectively and will be used to assess the system. They collectively provide a good proxy for most standard equity portfolios, have large volumes of recommendation and historical price data, and will allow for an assessment of the correlation (if any) between efficacy of the algorithm and market capitalisation\footnote{Such a relationship will likely be based on the regularity of recommendations and the relationship between company executives and the analysts}.
 
 
 \subsection{Individual Performance}
-The most typical use case for a stock recommendation is to aide in determining the most appropriate action to take regarding a single stock, thus an algorithm that can supplement this data by assessing analysts over a wider portfolio and then augmenting and aggregating recommendations based on this exogenous information would provide enhance their usability. The exact usage of this trait will be examined in section \ref{sec:schedule}. In order to assess the quality of an algorithm both in the case of a portfolio and for an individual security, they will be optimised for ratings for the years 1990-2015 then compared on their absolute cumulative performance during the calendar years 2016-2018. 
+The most typical use case for a stock recommendation is to aide in determining the most appropriate action to take regarding a single stock. Data usability can be enhanced by an algorithm that supplements it through the assessment of analysts over a wider portfolio. This will allow for the augmentation and aggregation of recommendations based on exogenous information. The exact usage of this trait is examined in section \ref{sec:schedule}. In order to assess the quality of an algorithm, both in the case of a portfolio and for an individual security, they will be optimised for ratings for the years 1990-2015 then compared on their absolute cumulative performance during the calendar years 2016-2018. 
 
 \subsection{Robustness}
-Many research houses are part of a larger corporate structure that may include prop trading divisions so there can be a direct relationship between the price of a security and the overall profit or loss of the entire firm. This can create an incentive for cheating as recommendations are able to influence stock prices, as noted in section \ref{sec:IFBack}. Such cheating is likely to be systematic rather than one-off and should thus should be punished by the system, however the uncontrolled environment that the algorithm will be used in is not suitable for objectively assessing specific forms of it. 
-As a result of the importance for cheating and the difficulty doing so using only real data it is necessary to create data that simulate various forms and degrees of bias and collusion in order to demonstrate the efficacy of the algorithm.
+Many research houses are part of a larger corporate structure that may include prop trading divisions. Therefore a direct relationship between the price of a security and the overall profit or loss of the entire firm may exist. This can create an incentive for cheating as recommendations are able to influence stock prices, as noted in section \ref{sec:IFBack}. Such cheating is likely to be systematic rather than incidental and should be punished by the system, however the uncontrolled environment that the algorithm will be used in is not suitable for objectively assessing specific forms of it. 
+As a result of the difficulty to observe cheating using only real data, it is necessary to create data that simulate various forms and degrees of bias and collusion. Hence, the efficacy of the algorithm can be accuately demonstrated.
 
 \begin{table}[p]
     \centering
@@ -31,7 +27,7 @@ As a result of the importance for cheating and the difficulty doing so using onl
          & Aggregate Level of Financial Success  &Individual Level of Financial Success & Robustness of System \\\midrule
         Ideal & System outperforms SP[1$|$4$|$6]00 & More accurate than lagged Fama-French model for an individual security & Proven against experimental data to be highly robust against collusion and spam\\
         \addlinespace
-        Good & Outperforms simple average of Recommendations & More Accurate than a CAPM model for an individual security & Robust against collusion and span in all but the most extreme cases\\
+        Good & Outperforms simple average of Recommendations & More Accurate than a CAPM model for an individual security & Robust against collusion and spam in all but the most extreme cases\\
         \addlinespace
         Acceptable & System provides greater returns than inflation && Performs better than simple average against white noise and some collusion \\ \bottomrule
     \end{tabularx}
@@ -41,17 +37,17 @@ As a result of the importance for cheating and the difficulty doing so using onl
 
 
 \section{Schedule}\label{sec:schedule}
-The first stage of the thesis includes all preparation work and production of the initial algorithm. At the outset this stage primarily involved gaining a deeper understanding of the topic and greater intuition about the topic so that any relevant gaps in the literature could be adequately captured and addressed by the problem statement. Once this was complete the process of cleaning data and formatting it as seen in tables \ref{tab:industries}, \ref{tab:recommendations}, and \ref{tab:histPrice}. This was done for the SP100, SP400, and SP600 for reasons explained in section \ref{sec:plan}. 
+The first stage of the thesis includes all preparation work and production of the initial algorithm. At the outset, this stage is primarily involved in gaining a deeper understanding and greater intuition of the topic so that any deficiencies in literature are adequately explored and addressed by the problem statement. Once this is complete, the process of cleaning data and formatting it as seen in tables \ref{tab:industries}, \ref{tab:recommendations}, and \ref{tab:histPrice} occurs. This was done for the SP100, SP400, and SP600 for reasons explained in section \ref{sec:plan}. 
 
-After the problem had been formulated and the data was in a form that was mostly ideal, preliminary work began on several aggregation methods. Details on several on the approaches are laid out in section \ref{sec:plan} and the bulk of this work will occur over the holiday period and early next term as illustrated in figure \ref{fig:gantt}.
+Once the problem is formulated and the data is in a form that was mostly ideal, preliminary work on several aggregation methods begins. Details on these approaches are laid out in section \ref{sec:plan} and the bulk of this work will occur over the holiday period and early next term as illustrated in figure \ref{fig:gantt}.
 
-The second stage will start at the beginning of term 2 and overlap slightly with stage one as some fine tuning is naturally a part of the development process. Towards the end and after the fine tuning is complete, the single best performing algorithm across the SP100, 400, and 600 portfolios will be selected. This process will also overlap with fine tuning to ensure that the best version of the best algorithm is chosen.
+The second stage will start at the beginning of term 2 and overlap slightly with stage one as some fine tuning is naturally a part of the developmental process. Towards the end and after the fine tuning is complete, the single best performing algorithm across the SP100, 400, and 600 portfolios will be selected. This process will also overlap with fine tuning to ensure that the best version of the best algorithm is chosen.
 
-Concurrently with stage two, in stage three simulated data will be created that will aid in the assessment of the chosen program's robustness against incorrect ratings and white noise. After this is complete and the optimum program has been chosen in stage two then the program will be assessed based on the definition of success outlined in section \ref{sec:success}.
+Concurrently with stage two, simulated data will be created in stage three to aid in the assessment of the chosen program's robustness against incorrect ratings and white noise. After this is complete and the optimum program has been chosen in stage two, the program will be assessed based on the definition of success outlined in section \ref{sec:success}.
 
-Stage four will take place over the entirety of term 3 and the holiday preceding it. This will involve the automating the process of data requests and generalising the algorithm so that it can use trustworthiness scores calculated for all analysts to produce recommendations for either a single stock or a portfolio fulfilling the requirements of individual financial success. This platform would likely be online however ideally it would have an API so that it could be integrated into trading platforms such as nabtrade, CommSec, or Robinhood, to supplement existing tools\footnote{Existing tools in such platforms are typically raw ratings from a few agencies and a list of news articles that feature the relevant company}.
-{
-\newgeometry{left=1.5cm, bottom =1.5cm, top=1.5cm, right=1.5cm}
+Stage four will take place over the entirety of term three as well as the break preceding it. This will involve automating the process of data requests and generalising the algorithm. The resulting trustworthiness scores calculated for all analysts will produce recommendations for either a single stock or a portfolio with the aim of fulfilling the requirements for individual financial success. This platform would likely be implemented online but ideally would have an API so that integration into trading platforms such as nabtrade, CommSec, or Robinhood, is possible.\footnote{Existing tools in such platforms are typically raw ratings from a few agencies and a list of news articles that feature the relevant company}.
+
+%\newgeometry{left=1.5cm, bottom =1.5cm, top=1.5cm, right=1.5cm}
 \begin{landscape}
 \pagestyle{empty}
 
@@ -102,11 +98,9 @@ vgrid]{2}{41}
 \pagestyle{plain}
 \end{landscape}
 
-}
-
 
 \section{Proposed Approaches}\label{sec:plan}
-The data has several traits, such as high volatility of stock prices or sparse recommendations for small-cap stocks, that either need to be addressed for accurate results or could be utilised to improve results. Stage one, defined in section \ref{sec:schedule}, involves creating several competing systems and assessing them on performance, so the following techniques can be tested to determine if they increase performance adequately or should be disregarded in favour of a more parsimonious model.
+The data has several traits, such as high volatility of stock prices or sparse recommendations for small-cap stocks, that either need to be addressed for accurate results or could be utilised to improve results. Stage one, defined in section \ref{sec:schedule}, involves creating several competing systems and assessing them on performance. The following techniques can be tested to determine if they increase performance adequately or should be disregarded in favour of a more parsimonious model.
 
 \begin{equation}
     ma(y_t) = \begin{cases}
@@ -117,18 +111,18 @@ The data has several traits, such as high volatility of stock prices or sparse r
 \end{equation}
 
 \subsection{Moving Averages}
-Due to high volatility of stock prices, a moving average will likely be necessary to reduce the effects of noise on final estimates. The exact size of the averaging window will likely have to be carefully considered as most forecasts have a short to medium time horizon and too large a window may cause the system to fail to identify and attribute the correct or incorrect prediction of a short-lived jump or spike\footnote{Such a scenario would be quite common in the case of predicting the earnings of a company before they are released}. Several possible methods are posited in equation \ref{eq:ma}.
+Due to the high volatility of stock prices, a moving average will likely be necessary to reduce the effects of noise on final estimates. The exact size of the averaging window will likely have to be carefully considered as most forecasts have a short to medium time horizon. Too large a window may cause the system to fail to identify and attribute the correct or incorrect prediction of a short-lived jump or spike\footnote{Such a scenario would be quite common in the case of predicting the earnings of a company before they are released}. Several possible methods are posited in equation \ref{eq:ma}.
 
 
-
+\clearpage
 \subsection{Classical Decomposition}
-By definition alpha involves foreseeing deviation from the mean that is only predicted by few. Thus predicting that a stock will rise that has always risen consistently should have less influence on an analysts trust than the prediction of an unexpected movement. A technique that makes use of this involves breaking down a time series into three components (trend, seasonal, and cycle/residual) which can be done in a multitude of ways as shown in equation \ref{eq:decomp}. The significance of each component is thus:
+By definition alpha involves foreseeing deviation from the mean that is only predicted by few traders. Thus the prediction of a price increase in a stock that has always risen consistently should have less influence on an analysts trust than the prediction of an unexpected movement. A technique that makes use of this involves breaking down a time series into three components (trend, seasonal, and cycle/residual) which can be done in a multitude of ways as shown in equation \ref{eq:decomp}. The definition of each component are the following.
 \begin{description}
-    \item[Trend] The trend over time of the time series, typically OLS-fitted linear, polynomial, or exponential function. The most parsimonious function is likely to be exponential or linear however this will have to be examined during the construction of the model.
-    \item[Seasonal] Seasonality in this case refers to any regular pattern. These patterns can be monthly, quarterly, or even each day of the week. Stock markets have been shown to demonstrate some degree of seasonality \cite{bogousslavsky2016infrequent}, and it would not be ideal to reward an analyst for predicting a pattern that is actually quite common, so deseasonalising the prices could aid in the model's ability to isolate alpha.
-    \item[Cycle] The cycle is what's left after the time series has been deseasonlised and detrended and consists only of variation that is not explained by either of those two phenomenon.
+    \item[Trend] The trend of the time series is, typically, an OLS-fitted linear, polynomial, or exponential function. The most parsimonious function is likely to be exponential or linear however this will be examined during the construction of the model.
+    \item[Seasonal] Seasonality in this case refers to any regular pattern. These patterns can be monthly, quarterly, or even daily. Stock markets have been shown to demonstrate some degree of seasonality \cite{bogousslavsky2016infrequent}. Rewarding an analyst for predicting a pattern that proves to be quite common may prove detrimental to the reliability of the algorithm. Therefore, deseasonalising the prices could aid in the model's ability to isolate alpha.
+    \item[Cycle] The cycle is what remains after the time series has been deseasonlised and detrended. It consists only of variation that is not explained by either of those two phenomena.
 \end{description}
-The algorithm could then be run on the cycle and any significant scores could be used to augment the scores generated by running the algorithm on the full series.
+The algorithm will then be run on the cycle and any significant scores will be used to augment the scores generated by running the algorithm on the full series.
 
 
 
@@ -143,10 +137,10 @@ The algorithm could then be run on the cycle and any significant scores could be
 \end{equation}
 
 \subsection{Trust Decay}
-Anticipating a continuous change in quality in a firm will likely by important as alpha is typically derived from people, who are unlikely to remain in the same job for their entire career. If an analytical firm stopped producing recommendations on a company for 30 years it would probably not be a good idea for their trustworthiness to remain the same. Thus some kind of decay, most likely a half-life of some sort, should be applied to trust scores.
+Anticipating a continuous change in quality in a firm will likely be important as alpha is typically derived from people who are unlikely to remain in the same position for their entire career. If an analytical firm stopped producing recommendations on a company for 30 years, it would be unwise for their trustworthiness to remain the same. Thus some kind of decay, most likely a half-life of sorts, should be applied to trust scores.
 
 \subsection{Second-Order Analysis}
-Another potential method for identify exceptional and unique performance is to look at the performance of a single firm or section of a firm and contrast that against the trust rating generated by running the algorithm on the full set of analysts. This will give an idea about how much better (or worse) a single firm is than the full set in aggregate which could be quite a good indicator of alpha. An example of such a measure is demonstrated in equation \ref{eq:bradfordsAlpha}, where $T$ is time, $S$ is the set of all securities, $\tau$ is the trustworthiness of an analyst, $r_{s,t}$ is an analyst's rating of stock $s$ at time $t$, $v_{s,t}$ is the true rating of stock $s$ at time $t$, and $\tilde{v}_{s,t}$ is the aggregated rating calculated in the first run of the algorithm. 
+Another potential method for identifying exceptional and unique performance is to observe the performance of a single firm or section of a firm. This is then compared to the trust rating generated by running the algorithm on the full set of analysts. This will indicate about how much better (or worse) a single firm is than the full set in aggregate which could be quite a good indicator of alpha. An example of such a measure is demonstrated in equation \ref{eq:bradfordsAlpha}, where $T$ is time, $S$ is the set of all securities, $\tau$ is the trustworthiness of an analyst, $r_{s,t}$ is an analyst's rating of stock $s$ at time $t$, $v_{s,t}$ is the true rating of stock $s$ at time $t$, and $\tilde{v}_{s,t}$ is the aggregated rating calculated in the first run of the algorithm. 
 
 \begin{equation}
     \textit{Bradford's Alpha} = \frac{\tau \left(\frac{1}{|S||T| - 1}\sum\limits_{s\in S}\sum\limits_{t\in T}(v_{s,t} - \tilde{v}_{s,t}) ^2\right)^\frac{1}{2}}{\left(\frac{1}{|S||T| - 1}\sum\limits_{s\in S}\sum\limits_{t\in T}(r_{s,t} - v_{s,t} )^2\right)^\frac{1}{2}} \label{eq:bradfordsAlpha}
